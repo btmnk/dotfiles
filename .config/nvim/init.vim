@@ -29,6 +29,9 @@ call plug#begin()
   Plug 'sbdchd/neoformat'
   Plug 'dense-analysis/ale'  
   Plug 'editorconfig/editorconfig-vim'
+
+  " colorscheme
+  Plug 'ghifarit53/tokyonight-vim'
 call plug#end()
 
 " load lua
@@ -64,7 +67,13 @@ nnoremap <leader>n :NvimTreeFindFile<cr>
 nnoremap <leader>t :NvimTreeToggle<cr>
 
 " misc
-set termguicolors
 highlight NvimTreeFolderIcon guibg=blue
 set completeopt=menu,menuone,noselect
 
+" theme
+set termguicolors
+
+let g:tokyonight_style = 'night' " available: night, storm
+let g:tokyonight_enable_italic = 1
+
+colorscheme tokyonight
