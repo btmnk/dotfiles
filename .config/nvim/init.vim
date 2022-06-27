@@ -34,6 +34,8 @@ call plug#end()
 " load lua
 lua require("init")
 
+set number
+
 " tabs keymap
 nnoremap <S-w> :tabclose<cr>
 
@@ -46,9 +48,12 @@ nnoremap <leader>b <cmd>Telescope file_browser<cr>
 
 " ale config
 let g:ale_fixers = {
-\  'javascript': ['eslint'],
-\  'typescript': ['eslint']
+\  '*': ['prettier'],
+\  'javascript': ['eslint', 'prettier'],
+\  'typescript': ['eslint', 'prettier']
 \}
+
+let g:ale_fix_on_save = 1
 
 " timeoutlen
 set timeout timeoutlen=3000 ttimeoutlen=100 
