@@ -22,23 +22,17 @@ call plug#begin()
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'nvim-treesitter/playground'
 
-  " file explorer
-  Plug 'kyazdani42/nvim-tree.lua'
-
   " prettier & linting
   Plug 'sbdchd/neoformat'
   Plug 'dense-analysis/ale'  
   Plug 'editorconfig/editorconfig-vim'
 
   " colorscheme
-  Plug 'ghifarit53/tokyonight-vim'
+  Plug 'marko-cerovac/material.nvim'
 call plug#end()
 
 " load lua
 lua require("init")
-
-" activate syntax highlighting
-syntax on
 
 " tabs keymap
 nnoremap <S-w> :tabclose<cr>
@@ -61,19 +55,10 @@ set timeout timeoutlen=3000 ttimeoutlen=100
 
 " custom maps
 set pastetoggle=<F3>
-nnoremap <C-n> :NvimTreeFocus<cr>
-nnoremap <leader>r :NvimTreeRefresh<cr>
-nnoremap <leader>n :NvimTreeFindFile<cr>
-nnoremap <leader>t :NvimTreeToggle<cr>
 
 " misc
-highlight NvimTreeFolderIcon guibg=blue
 set completeopt=menu,menuone,noselect
 
 " theme
-set termguicolors
-
-let g:tokyonight_style = 'night' " available: night, storm
-let g:tokyonight_enable_italic = 1
-
-colorscheme tokyonight
+let g:material_style = "deep ocean"
+colorscheme material
