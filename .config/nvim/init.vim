@@ -27,6 +27,10 @@ call plug#begin()
   Plug 'dense-analysis/ale'  
   Plug 'editorconfig/editorconfig-vim'
 
+  " status line
+  Plug 'nvim-lualine/lualine.nvim'
+  Plug 'kyazdani42/nvim-web-devicons'
+
   " colorscheme
   Plug 'marko-cerovac/material.nvim'
 call plug#end()
@@ -34,7 +38,7 @@ call plug#end()
 " load lua
 lua require("init")
 
-set number
+set relativenumber
 
 " tabs keymap
 nnoremap <S-w> :tabclose<cr>
@@ -48,10 +52,17 @@ nnoremap <leader>b <cmd>Telescope file_browser<cr>
 
 " ale config
 let g:ale_fixers = {
-\  '*': ['prettier'],
-\  'javascript': ['eslint', 'prettier'],
-\  'typescript': ['eslint', 'prettier']
+\  'javascript': ['eslint'],
+\  'typescript': ['eslint']
 \}
+
+
+let g:ale_linters = {
+\  'typescript': ['eslint'],
+\  'javascript': ['eslint']
+\}
+
+let g:ale_linter_aliases = {'typescriptreact': 'typescript'}
 
 let g:ale_fix_on_save = 1
 
@@ -65,5 +76,9 @@ set pastetoggle=<F3>
 set completeopt=menu,menuone,noselect
 
 " theme
+if $TERM == "xterm-256color"
+  set t_Co=256
+endif
+
 let g:material_style = "deep ocean"
 colorscheme material
