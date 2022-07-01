@@ -1,1 +1,1 @@
-Install vim-plug first: https://github.com/junegunn/vim-plug
+Install vim-plug first: https://github.com/junegunn/vim-plug#neovim
