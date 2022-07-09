@@ -6,6 +6,9 @@ link_file_or_dir() {
 	if [ ! $1 ]; then 
 		echo "Source file/dir not passed."
 		exit;
+	elif [ ! $2 ]; then
+		echo "Target file/dir not passed."
+		exit;
 	fi
 
 	file_source="$dotfiles_dir/$1"
