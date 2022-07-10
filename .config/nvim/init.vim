@@ -40,6 +40,12 @@ lua require("init")
 
 set relativenumber
 
+" move lines
+nnoremap J :m .+1<CR>==
+nnoremap K :m .-2<CR>==
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
 " tabs keymap
 nnoremap <S-w> :tabclose<cr>
 
@@ -65,6 +71,12 @@ let g:ale_linters = {
 let g:ale_linter_aliases = {'typescriptreact': 'typescript'}
 
 let g:ale_fix_on_save = 1
+
+" yank
+augroup highlight_yank
+	autocmd!
+	autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 40})	
+augroup END
 
 " timeoutlen
 set timeout timeoutlen=3000 ttimeoutlen=100 
