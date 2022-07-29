@@ -6,6 +6,7 @@ call plug#begin()
   Plug 'hrsh7th/cmp-path'
   Plug 'hrsh7th/cmp-cmdline'
   Plug 'hrsh7th/nvim-cmp' 
+  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
   " Snippets
   Plug 'L3MON4D3/LuaSnip'
@@ -58,12 +59,14 @@ nnoremap <leader>b <cmd>Telescope file_browser<cr>
 
 " ale config
 let g:ale_fixers = {
+\  'go': ['gopls'],
 \  'javascript': ['eslint'],
 \  'typescript': ['eslint']
 \}
 
 
 let g:ale_linters = {
+\  'go': ['gopls'],
 \  'typescript': ['eslint'],
 \  'javascript': ['eslint']
 \}
