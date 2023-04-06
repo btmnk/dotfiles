@@ -16,6 +16,12 @@ parse_git_branch() {
 }
 export PS1="\u@\h \[\e[32m\]\w \[\e[91m\]\$(parse_git_branch)\[\e[00m\]$ "
 
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+alias sudo='sudo '
+
 # pnpm
 alias p=pnpm
 

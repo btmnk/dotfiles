@@ -27,3 +27,10 @@ link_file_or_dir ".bash_aliases" "/home/$USER/.bash_aliases"
 
 # nvim config
 link_file_or_dir ".config/nvim" "/home/$USER/.config/nvim"
+
+if zsh --version &> /dev/null
+then
+	# zshrc config
+	link_file_or_dir ".zshrc" "/home/$USER/.zshrc"
+fi
+
