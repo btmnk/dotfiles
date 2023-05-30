@@ -32,5 +32,7 @@ if zsh --version &> /dev/null
 then
 	# zshrc config
 	link_file_or_dir ".zshrc" "/home/$USER/.zshrc"
+	# install powerlevel10k theme
+	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 fi
 

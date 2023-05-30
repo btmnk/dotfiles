@@ -95,20 +95,23 @@ else
   export EDITOR='mvim'
 fi
 
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
-alias sudo='sudo '
-
-# pnpm
-alias p=pnpm
-
-# Takes all merged local branches and soft deletes them
-alias git:clean='git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d'
-
-# docker start
-alias dosta='sudo service docker start'
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# LOAD BASH ALIASES
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# PNPM
+export PNPM_HOME="/home/btmnk/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
