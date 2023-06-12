@@ -31,6 +31,9 @@ alias git:clean='git branch --merged | egrep -v "(^\*|master|dev)" | xargs git b
 # docker start
 alias dosta='sudo service docker start'
 
+# gradle spring boot run dev
+alias bootrun='SPRING_CONFIG_NAME=development ./gradlew :backend:bootRun'
+
 # git compare
 alias gitcmp:stage='git log --no-merges --pretty=format:"%ar%x09%an%x09%x09%Cgreen%s" origin/master..origin/stage'
 alias gitcmp:dev='git log --no-merges --pretty=format:"%ar%x09%an%x09%x09%Cgreen%s" origin/stage..origin/development'
