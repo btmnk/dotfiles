@@ -112,6 +112,10 @@ export NVM_DIR="$HOME/.nvm"
 export PNPM_HOME="/home/btmnk/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 
+# DENO
+export DENO_INSTALL="/home/btmnk/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
