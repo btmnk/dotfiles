@@ -40,5 +40,5 @@ alias gitcmp:dev='git log --no-merges --pretty=format:"%ar%x09%an%x09%x09%Cgreen
 
 # openfortivpn
 alias fortivpn='sudo openfortivpn -c ~/.vpn/fortivpnconf'
-alias vpn='sudo tailscale up --accept-routes --operator=$USER'
+alias vpn='sudo tailscale up --accept-routes --shields-up --operator=$USER'
 alias vpnoff='sudo tailscale down'

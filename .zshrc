@@ -92,7 +92,7 @@ source $ZSH/oh-my-zsh.sh
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
-  export EDITOR='mvim'
+  export EDITOR='nvim'
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -119,3 +119,14 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# bun completions
+[ -s "/home/rico/.bun/_bun" ] && source "/home/rico/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# android studio
+export ANDROID_STUDIO_PATH="$HOME/apps/android-studio"
+export PATH="$ANDROID_STUDIO_PATH/bin:$PATH"
