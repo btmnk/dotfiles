@@ -38,6 +38,9 @@ alias bootrun='./gradlew :backend:bootRun --args=--spring.config.name=developmen
 alias gitcmp:stage='git log --no-merges --pretty=format:"%ar%x09%an%x09%x09%Cgreen%s" origin/master..origin/stage'
 alias gitcmp:dev='git log --no-merges --pretty=format:"%ar%x09%an%x09%x09%Cgreen%s" origin/stage..origin/development'
 
+# kubectl
+alias k='kubectl'
+
 # openfortivpn
 alias fortivpn='sudo openfortivpn -c ~/.vpn/fortivpnconf'
 alias vpn='sudo tailscale up --accept-routes --shields-up --operator=$USER'
