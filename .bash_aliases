@@ -28,10 +28,6 @@ alias p=pnpm
 # Takes all merged local branches and soft deletes them
 alias git:clean='git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d'
 
-gitsquash() {
-  git reset --soft $1 && git commit --edit -m"$(git log --format=%B --reverse HEAD..HEAD@{1})" 
-}
-
 # docker start
 alias dosta='sudo service docker start'
 
