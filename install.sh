@@ -33,6 +33,9 @@ then
 	# zshrc config
 	link_file_or_dir ".zshrc" "/home/$USER/.zshrc"
 	# install powerlevel10k theme
+	echo "install p10k..."
 	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+else
+	echo "zsh not yet installed, skipping link"
 fi
 

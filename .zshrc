@@ -121,7 +121,7 @@ export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # bun completions
-[ -s "/home/rico/.bun/_bun" ] && source "/home/rico/.bun/_bun"
+[ -s "/home/$USER/.bun/_bun" ] && source "/home/$USER/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
@@ -130,3 +130,6 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # android studio
 export ANDROID_STUDIO_PATH="$HOME/apps/android-studio"
 export PATH="$ANDROID_STUDIO_PATH/bin:$PATH"
+
+# bun completions
+[ -s "/home/btmnk/.bun/_bun" ] && source "/home/btmnk/.bun/_bun"
