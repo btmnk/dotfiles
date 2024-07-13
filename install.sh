@@ -7,34 +7,67 @@ link_file_or_dir() {
 		echo "Source file/dir not passed."
 		exit;
 	elif [ ! $2 ]; then
-		echo "Target file/dir not passed."
+		echo "Target dir not passed."
 		exit;
 	fi
 
-	file_source="$dotfiles_dir/$1"
-	file_target="$2"
-	
-	if [ ! -e "$file_target" ]; then
-		ln -s $file_source $file_target
-		echo "Linked $file_source to $file_target"
-	else
-		echo "$file_target already exists, skipping."
+	relative_source_path=$1
+	full_source_path=$dotfiles_dir/$relative_source_path
+	target_dir_path=$2
+	full_target_path=$target_dir_path/$relative_source_path
+	full_target_dir_path="$(dirname $full_target_path)"
+
+	if [ -L $full_target_path ]; then
+		echo "[$relative_source_path] The target file $full_target_path is already a symlink, skipping."
+		echo "----"
+		return
 	fi
+
+	# create target directory if it doesnt exist
+	if [ ! -e $full_target_dir_path ]; then
+		mkdir -p $full_target_dir_path
+		echo "[$relative_source_path] created target dir $full_target_dir_path"
+	fi
+
+	# if target file exists we remove it so it can be overridden
+	if [ -e $full_target_path ]; then
+		echo "[$relative_source_path] override existing target $full_target_path"
+		rm $full_target_path
+	fi
+	
+	ln -s $full_source_path $full_target_path
+	echo "[$relative_source_path] linked $full_source_path to $full_target_path"
+	echo "----"
 }
 
-# bash_aliases
-link_file_or_dir ".bash_aliases" "/home/$USER/.bash_aliases"
+#
+#	INSTALL BASH ALIASES
+#
 
-# nvim config
-link_file_or_dir ".config/nvim" "/home/$USER/.config/nvim"
+link_file_or_dir ".bash_aliases" "$HOME"
+
+#
+#	INSTALL NVIM CONFIG
+#
+
+link_file_or_dir ".config/nvim" "$HOME"
+
+#
+#	INSTALL ZSH CONFIG
+#
 
 if zsh --version &> /dev/null
 then
 	# zshrc config
-	link_file_or_dir ".zshrc" "/home/$USER/.zshrc"
+	link_file_or_dir ".zshrc" "$HOME"
 	# install powerlevel10k theme
-	echo "install p10k..."
-	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+	p10k_dir=${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+	if [ -d "$p10k_dir" ]; then
+                echo "p10k already installed, skip"
+        else
+		echo "install p10k..."
+        	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+        fi
 else
 	echo "zsh not yet installed, skipping link"
 fi
