@@ -60,14 +60,19 @@ if zsh --version &> /dev/null
 then
 	# zshrc config
 	link_file_or_dir ".zshrc" "$HOME"
+
 	# install powerlevel10k theme
 	p10k_dir=${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
 	if [ -d "$p10k_dir" ]; then
-                echo "p10k already installed, skip"
-        else
+		echo "[p10k] p10k already installed, skip"
+	else
 		echo "install p10k..."
-        	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-        fi
+		git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+	fi
+
+	# link p10k config
+	link_file_or_dir ".p10k.zsh" "$HOME"
 else
 	echo "zsh not yet installed, skipping link"
 fi
