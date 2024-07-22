@@ -131,5 +131,8 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export ANDROID_STUDIO_PATH="$HOME/apps/android-studio"
 export PATH="$ANDROID_STUDIO_PATH/bin:$PATH"
 
+# neovim
+export PATH="$PATH:/opt/nvim-linux64/bin"
+
 # bun completions
 [ -s "/home/btmnk/.bun/_bun" ] && source "/home/btmnk/.bun/_bun"
