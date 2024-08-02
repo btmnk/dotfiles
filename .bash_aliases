@@ -1,3 +1,8 @@
+# private bash aliases
+if [ -f ~/.bash_aliases_private ]; then
+    . ~/.bash_aliases_private
+fi
+
 # vim -> nvim
 if nvim --version &> /dev/null
 then
@@ -30,3 +35,4 @@ alias bootrun='./gradlew :backend:bootRun --args=--spring.config.name=developmen
 # git compare
 alias gitcmp:stage='git log --no-merges --pretty=format:"%ar%x09%an%x09%x09%Cgreen%s" origin/master..origin/stage'
 alias gitcmp:dev='git log --no-merges --pretty=format:"%ar%x09%an%x09%x09%Cgreen%s" origin/stage..origin/development'
+
