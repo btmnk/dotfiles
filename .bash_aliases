@@ -29,10 +29,10 @@ alias git:clean='git branch --merged | egrep -v "(^\*|master|dev)" | xargs git b
 # docker start
 alias dosta='sudo service docker start'
 
-# gradle spring boot run dev
-alias bootrun='./gradlew :backend:bootRun --args=--spring.config.name=development'
-
 # git compare
 alias gitcmp:stage='git log --no-merges --pretty=format:"%ar%x09%an%x09%x09%Cgreen%s" origin/master..origin/stage'
 alias gitcmp:dev='git log --no-merges --pretty=format:"%ar%x09%an%x09%x09%Cgreen%s" origin/stage..origin/development'
+
+# Host to WSL 2 tunnel
+alias host2wsl='netsh interface portproxy add v4tov4 listenport=$1 listenaddress=0.0.0.0 connectport=$1 connectaddress=(wsl hostname -I)'
 
